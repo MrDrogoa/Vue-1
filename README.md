@@ -1,5 +1,32 @@
 # Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Progreso del Proyecto
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+### 6 de Agosto, 2025
+- Descargué las dependencias de Vue y Vite dentro de una carpeta llamada `vite-project`
+- Dejé todo preparado para seguir avanzando con el desarrollo
+- Configuración inicial del proyecto Vue 3 con Vite completada
+
+## Estructura del Proyecto
+```
+vite-project/
+├── index.html
+├── package.json
+├── README.md
+├── vite.config.js
+├── public/
+│   └── vite.svg
+└── src/
+    ├── App.vue
+    ├── main.js
+    ├── style.css
+    ├── assets/
+    │   └── vue.svg
+    └── components/
+        └── HelloWorld.vue
+```
+
+## Próximos Pasos
+- Continuar con el desarrollo de la aplicación Vue
+- Agregar nuevos componentes según sea necesario
+- Implementar funcionalidades específicas del proyecto
