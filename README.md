@@ -25,7 +25,20 @@
 - `v-bind`: Hace que los atributos sean dinámicos (también se puede escribir con `:`)
 - `v-model`: Crea un vínculo de datos bidireccional, ideal para formularios reactivos
 - `v-if`: Muestra contenido en el HTML dinámicamente según una condición
+- `v-for`: Permite renderizar listas de elementos
+- `:key`: Se usa con `v-for` para proporcionar una llave única para cada elemento (requerido por Vue)
 - Clases dinámicas: Se pueden aplicar clases CSS condicionalmente
+
+**Renderizado de Listas:**
+- `v-for` puede renderizar arrays simples y objetos complejos
+- Ideal para mostrar datos de APIs
+- Cada elemento necesita una `:key` única para el rendimiento óptimo
+
+**Comunicación entre Componentes:**
+- `defineProps`: Permite enviar datos del componente padre al componente hijo
+- El componente hijo se inserta dentro del componente padre
+- `defineEmits`: Funciona al revés, permite comunicación del hijo hacia el padre
+- Props van "hacia abajo", emits van "hacia arriba"
 
 ## Estructura del Proyecto
 ```
@@ -43,7 +56,8 @@ vite-project/
     ├── assets/
     │   └── vue.svg
     └── components/
-        └── HelloWorld.vue
+        └── HeaderComponent.vue
+        └── ChildComponent.vue
 ```
 
 ## Próximos Pasos
