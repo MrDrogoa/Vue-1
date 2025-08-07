@@ -40,6 +40,43 @@
 - `defineEmits`: Funciona al revés, permite comunicación del hijo hacia el padre
 - Props van "hacia abajo", emits van "hacia arriba"
 
+**Slots:**
+- Los slots son una manera de transferir información HTML del componente padre al hijo
+- A diferencia de los props, se ponen como HTML dentro del template con `<slot>`
+- Se guarda código HTML directamente, no en variables como los props
+- Útiles para hacer ventanas modales o avisos de error
+- Se puede usar `v-slot` y agregar `name` a los slots para identificarlos
+- Ejemplo: `<template v-slot:nombre>contenido</template>`
+
+**Variables Computadas (Computed):**
+- Variable que depende de otra variable
+- El valor se modifica automáticamente si cambia la variable de la que depende
+- Básicamente es una función que devuelve un callback
+- Se recalcula solo cuando sus dependencias cambian
+- Ideal para cálculos que necesitan ser reactivos
+
+**Watchers:**
+- `watch`: Método especial que permite vigilar una variable
+- Si la variable cambia, se ejecuta el código que queramos
+- Permite al menos 2 parámetros (variable a observar y función a ejecutar)
+- 3er parámetro opcional: objeto con `immediate: true` para ejecutar inmediatamente
+- `watchEffect`: Similar al watch pero con diferencias:
+  - Solo necesita un argumento
+  - Se ejecuta inmediatamente sin configuración adicional
+  - Útil para manejar peticiones a APIs y conexiones de datos
+
+**Reactive vs Ref:**
+- `reactive`: Función de Vue específica para objetos
+- Se usa diferente a `ref`, trabaja directamente con objetos
+- No necesita `.value` para acceder a las propiedades
+- Ideal para formularios y estructuras de datos complejas
+
+**Formularios en Vue:**
+- Identificamos todos los inputs con `v-model.objeto`
+- Trabajamos con `@submit` para manejar el envío del formulario
+- `@submit.prevent` previene que la página se actualice por defecto
+- Permite validación y manejo personalizado de los datos del formulario
+
 ## Estructura del Proyecto
 ```
 vite-project/

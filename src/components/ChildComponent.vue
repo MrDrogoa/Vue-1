@@ -9,16 +9,16 @@
 // });
 
 // import
-import { ref } from "vue";
+// import { ref } from "vue";
 
-const emit = defineEmits(["login"]);
+// const emit = defineEmits(["login"]);
 
-const userName = ref("ara");
+// const userName = ref("ara");
 
-// con esta funcion vamos emitir la informacion de emit
-const login = () => {
-  emit("login", userName.value);
-};
+// // con esta funcion vamos emitir la informacion de emit
+// const login = () => {
+//   emit("login", userName.value);
+// };
 </script>
 <template>
   <!-- lo extrae de defineProps -->
@@ -30,16 +30,21 @@ const login = () => {
   </div> -->
 
   <div class="child">
-    <h2>Este es un hijo</h2>
-
+    <!-- <h2>Este es un hijo</h2>
     <p>Nombre user: {{ userName }}</p>
+    <button @click="login">Login</button> -->
+    <slot name="top"></slot>
+    <h2>Componente hijo</h2>
+    <slot name="bottom"></slot>
 
-    <button @click="login">Login</button>
+    <!-- <slot>
+      <h2>Solt por defecto</h2>
+    </slot> -->
   </div>
 </template>
 
 <style scoped>
 .child {
-  border: 5px solid #333;
+  border: 5px solid #762828;
 }
 </style>
