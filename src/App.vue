@@ -2,6 +2,7 @@
 // ===== IMPORTACIONES =====
 import HeaderComponent from "./components/HeaderComponent.vue";
 import ChildComponent from "./components/ChildComponent.vue";
+import { RouterView } from "vue-router";
 
 // ===== 1. VARIABLES REACTIVAS Y EVENTOS =====
 // Se importa ref para que las variables sean reactivas y funcionales
@@ -113,7 +114,7 @@ import ChildComponent from "./components/ChildComponent.vue";
 
 <template>
   <!-- ===== COMPONENTE HEADER ===== -->
-  <HeaderComponent></HeaderComponent>
+  <!-- <HeaderComponent></HeaderComponent> -->
 
   <!-- ===== EJEMPLOS COMENTADOS DE CONCEPTOS APRENDIDOS ===== -->
 
@@ -201,6 +202,7 @@ import ChildComponent from "./components/ChildComponent.vue";
 
   <!--   <button type="submit">Enviar</button> -->
   <!-- </form> -->
+  <RouterView />
 </template>
 
 <style scoped>

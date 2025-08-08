@@ -77,6 +77,49 @@
 - `@submit.prevent` previene que la página se actualice por defecto
 - Permite validación y manejo personalizado de los datos del formulario
 
+**Vue Router - Navegación entre páginas:**
+- Se instala con `npm install vue-router`
+- Sirve para gestionar la navegación dentro de aplicaciones Vue de una sola página (SPA)
+- Para separar páginas se crea la carpeta `views` en `src` donde se guardan todas las páginas
+- Los componentes de Vue son solo elementos reutilizables (botones, cards, etc.)
+
+**Configuración de Vue Router:**
+- Se crea una carpeta `router` en `src` con un archivo `.js`
+- Se usa la función `createRouter` como constante con un objeto que contiene:
+  - `history: createWebHistory()` - Para enrutado natural como estamos acostumbrados
+  - `routes: [{}]` - Array de rutas con 3 propiedades cada una:
+    - `path`: La ruta URL (ej: `"/"` para home)
+    - `name`: Nombre identificador de la ruta
+    - `component`: Archivo de `views` que se renderizará
+- Se exporta con `export default router`
+
+**Integración del Router:**
+- En `main.js` se modifica de `createApp(App).mount('#app')` a `createApp(App).use(router).mount('#app')`
+- En `App.vue` en el template se coloca `<RouterView />` para mostrar las rutas
+
+**Router Links - Enlaces internos:**
+- Se usa `<router-link>` como componente especial para navegación interna
+- Atributo `to` indica el destino: `<router-link to="/">Inicio</router-link>`
+- También se pueden usar variables: `:to="{name: 'home'}"`
+
+**Pinia - Gestor de Estados Global:**
+- Librería para trabajar con variables y funciones de manera global
+- Ideal para proyectos grandes donde se necesita compartir estado
+- Se instala con `npm install pinia`
+
+**Configuración de Pinia:**
+- En `main.js` se importa: `import { createPinia } from "pinia"`
+- Se crea constante: `const pinia = createPinia()`
+- Se integra: `createApp(App).use(router).use(pinia).mount("#app")`
+
+**Stores - Almacenamiento de Estado:**
+- Se crea carpeta `stores` en `src` para almacenar variables y funciones globales
+- Se usa `defineStore()` que necesita 2 parámetros:
+  - Nombre significativo único (string)
+  - Callback (arrow function) con las variables y funciones
+- Para usar el store en views: se declara como constante `const movieStore = useMovieStore()`
+- Permite comunicación entre componentes sin necesidad de props/emits
+
 ## Estructura del Proyecto
 ```
 vite-project/
@@ -92,9 +135,17 @@ vite-project/
     ├── style.css
     ├── assets/
     │   └── vue.svg
-    └── components/
-        └── HeaderComponent.vue
-        └── ChildComponent.vue
+    ├── components/
+    │   ├── HeaderComponent.vue
+    │   └── ChildComponent.vue
+    ├── router/
+    │   └── index.js
+    ├── stores/
+    │   └── movie.js
+    └── views/
+        ├── HomeViews.vue
+        ├── MoviesViews.vue
+        └── CreateMovieViews.vue
 ```
 
 ## Próximos Pasos
