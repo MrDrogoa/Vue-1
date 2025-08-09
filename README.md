@@ -120,6 +120,51 @@
 - Para usar el store en views: se declara como constante `const movieStore = useMovieStore()`
 - Permite comunicación entre componentes sin necesidad de props/emits
 
+**Pinia Persisted State - Persistencia de Datos:**
+- Para que la información persista al recargar la página
+- Se instala con `npm install pinia-plugin-persistedstate`
+- En `main.js` se importa y se usa: `pinia.use(piniaPluginPersistedState)`
+- En el archivo del store se agrega `{persist: true}` como segundo parámetro
+- El plugin ataca al localStorage para mantener la información guardada
+- **Problema común**: Si no se sale de la página del formulario, puede crear duplicados
+- **Solución**: Usar spread operator `{...movie}` para crear una copia del objeto y no pasar la referencia original
+- **Nota importante**: Los objetos siempre se pasan por referencia en JavaScript
+
+**Navegación Programática:**
+- Permite cambiar de ruta sin necesidad de enlaces `<a>` o botones tradicionales
+- Se usa dentro de funciones, como en el manejo de formularios
+- Se implementa con `router.push({ name: "nombreRuta" })`
+- Requiere importar el router: `import { useRouter } from 'vue-router'`
+- Útil para redirigir después de acciones como crear, editar o eliminar datos
+
+**Rutas Paramétricas (Dinámicas):**
+- Rutas que incluyen valores dinámicos en su definición
+- Permiten navegación a diferentes vistas basadas en parámetros (IDs, categorías, etc.)
+- Se definen en el router con dos puntos: `path: "/movies/:id"`
+- El parámetro después de `:` puede ser cualquier nombre descriptivo
+
+**Manejo de Parámetros en Rutas:**
+- Se usa la función `useRoute()` para acceder a los parámetros
+- Los parámetros se obtienen con: `route.params.nombreParametro`
+- Para manejar casos donde el parámetro no existe: usar `v-if` y `v-else`
+- En el store se crea función para buscar por parámetro usando `find()`:
+  ```javascript
+  const getMovie = (movieTitle) => {
+    return movies.value.find((movie) => movie.title === movieTitle);
+  };
+  ```
+
+**Enlaces a Rutas Paramétricas:**
+- Se usa `router-link` con objeto en el atributo `:to`:
+  ```vue
+  <router-link :to="{ name: 'movieDetails', params: { movieTitle: movie.title } }">
+  ```
+
+**Navegación entre Parámetros:**
+- Para detectar cambios de parámetros en el mismo componente se usa `watch()`
+- Vigila los cambios en `route.params` para actualizar el contenido
+- Evita problemas cuando se cambia el parámetro pero no el componente
+
 ## Estructura del Proyecto
 ```
 vite-project/
@@ -144,6 +189,7 @@ vite-project/
     │   └── movie.js
     └── views/
         ├── HomeViews.vue
+        ├── MovieDetailsViews.vue
         ├── MoviesViews.vue
         └── CreateMovieViews.vue
 ```

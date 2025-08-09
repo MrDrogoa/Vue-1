@@ -11,7 +11,14 @@ const movieStore = useMovieStore();
   <div class="movies">
     <ul>
       <li v-for="movie in movieStore.movies" :key="movie.title" class="movie">
-        <h2>{{ movie.title }}</h2>
+        <h2>
+          <!-- obetenemos el parametro para que nos lleve a la pagina de detalles -->
+          <RouterLink
+            :to="{ name: 'moviesDetails', params: { movieTitle: movie.title } }"
+          >
+            {{ movie.title }}
+          </RouterLink>
+        </h2>
         <p>Duration: {{ movie.duration }}</p>
         <p>Director: {{ movie.director }}</p>
       </li>
