@@ -2,8 +2,8 @@
 import HeaderComponent from "../components/HeaderComponent.vue";
 </script>
 <template>
-  <header-component />
-  <div>pagina de home</div>
+  <!-- <header-component /> -->
+  <h1>Welcome to the Home Page</h1>
 </template>
 
 <style scoped></style>

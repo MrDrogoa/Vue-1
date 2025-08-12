@@ -165,6 +165,40 @@
 - Vigila los cambios en `route.params` para actualizar el contenido
 - Evita problemas cuando se cambia el parámetro pero no el componente
 
+**Fetch API - Consumo de APIs externas:**
+- Consumir APIs en Vue es similar a hacerlo con JavaScript puro
+- Ejemplo: Usar la API de usuarios de https://jsonplaceholder.typicode.com/
+- Las peticiones suelen manejarse en la carpeta `stores`
+- Crear archivo `user.js` y exportar la constante `useUserStore` con `defineStore`
+- Definir variables con `ref` y la URL de la API
+- Crear función asíncrona con `fetch` para obtener los datos y asignarlos a la variable reactiva
+- Retornar las variables y funciones necesarias
+- En el componente, importar el store, mostrar los datos con `v-if` y usar un botón para disparar la petición
+
+**Lifecycle Hooks - Ciclo de vida de componentes:**
+- Son funciones especiales que se ejecutan en momentos específicos del ciclo de vida de un componente
+- `onMounted()`: Se ejecuta cuando el componente aparece en pantalla, útil para cargar datos de una API
+- `onUnmounted()`: Se ejecuta cuando el componente se desmonta, útil para limpiar recursos
+- `onUpdated()`: Se ejecuta cuando el componente se actualiza
+- Ejemplo: Usar `onMounted` para cargar el usuario automáticamente al renderizar el componente
+
+**Vitest - Testing en Vue:**
+- Librería para realizar pruebas en proyectos Vue
+- Se instala con: `npm install vitest @vue/test-utils jsdom -D`
+- En `package.json` agregar el script: `"test": "vitest"`
+- En `vite.config.js` agregar:
+  ```js
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
+  ```
+- Crear archivos de test en las views, ejemplo: `Home.test.js`
+- Usar `describe` para agrupar tests y `it` para tests individuales
+- Usar `mount` de `@vue/test-utils` para montar el componente y `expect` para comprobar resultados
+- Para evitar errores con dependencias como Pinia, se pueden comentar los imports en los tests
+- Los tests ayudan a detectar errores y asegurar que el código funciona correctamente
+
 ## Estructura del Proyecto
 ```
 vite-project/
@@ -186,12 +220,14 @@ vite-project/
     ├── router/
     │   └── index.js
     ├── stores/
-    │   └── movie.js
+    │   ├── movie.js
+    │   └── user.js
     └── views/
         ├── HomeViews.vue
         ├── MovieDetailsViews.vue
         ├── MoviesViews.vue
-        └── CreateMovieViews.vue
+        ├── CreateMovieViews.vue
+        └── Home.test.js
 ```
 
 ## Próximos Pasos
